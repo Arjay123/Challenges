@@ -1,0 +1,70 @@
+Why Sorting?
+============
+
+-Obvious implementations: Phonebook, directory, songbook, etc.
+-Problems that become easy once items are sorted:
+    -Find median:
+        .items in array A[0...n], in unsorted order
+        .sorting = A[0...n] -> B[0...n], where elements in B are compared in increasing order
+        .median = B[n/2], half of length of B
+        .finding median is constant time, if list is sorted
+    -Binary search:
+        .Only possible with sorted list
+        .Search is O(log n) time
+-Nonobvious:
+    -Data compression
+    -Computer graphics
+
+
+Insertion Sort
+==============
+For i = 1,2,...n
+    insert A[i] into sorted array A[0...i-1]
+    by pairwise swaps down to the correct position
+
+EX).
+    
+    5 2 4 6 1 3, key=2, swap 2 5
+    2 5 4 6 1 3, key=4, swap 4 5
+    2 4 5 6 1 3, key=6, 
+    2 4 5 6 1 3, key=1, swap 1 6, 1 5, 1 4, 1 2
+    1 2 4 5 6 3, key=3, swap 3 6, 3 5, 3 4
+    1 2 3 4 5 6
+
+Analysis:
+    .O(n) steps in terms of key movement
+    .At any given step, O(n) compare and swaps are possible
+    .O(n^2) runtime
+    .CAn replace pairwise swaps w/ binary search on sorted part of array, to make it O(n log n) compares
+    .Insertion, however, requires shifting elements to the right, going back to worst case O(n^2)
+
+
+
+Merge Sort
+==========
+
+Array A, Split into two arrays, L and R, Keeps splitting until single elements
+
+
+Merge: Two sorted arrays as input
+    Merge the two arrays together
+
+    20 13 7 2
+    12 11 9 1
+
+    Sort using two finger algorithm, each finger keeps track of smallest element in each array, compare the two elements, add smaller and increment chosen array
+
+    20 13 7 2, key=2
+    12 11 9 1, key=1, select 1 [1, 2]
+
+    20 13 7 2, key=2, select 2 [1, 2]
+    12 11 9,   key=2 
+
+
+    Merge is O(n) complexity
+
+
+Analysis:
+    .T(n) = c1 + 2T(n/2) + cn | divide + recursion + merge
+    
+
